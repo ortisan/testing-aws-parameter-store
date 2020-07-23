@@ -1,0 +1,5 @@
+server:
+  port: 5656
+spring:
+  application:
+    name: testing-aws-parameter-store
