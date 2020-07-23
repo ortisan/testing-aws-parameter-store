@@ -16,9 +16,11 @@ import java.util.Base64;
 
 @Component
 public class ConfigParameters {
+    private static final String REGION_DEFAULT = "us-east-1";
+
     public String getParameter(String parameter) {
         AWSCredentialsProvider credentials = InstanceProfileCredentialsProvider.getInstance();
-        AWSSimpleSystemsManagement simpleSystemsManagementClient = (AWSSimpleSystemsManagement) ((AWSSimpleSystemsManagementClientBuilder) ((AWSSimpleSystemsManagementClientBuilder) AWSSimpleSystemsManagementClientBuilder.standard().withCredentials(credentials)).withRegion("us-east-1")).build();
+        AWSSimpleSystemsManagement simpleSystemsManagementClient = (AWSSimpleSystemsManagement) ((AWSSimpleSystemsManagementClientBuilder) ((AWSSimpleSystemsManagementClientBuilder) AWSSimpleSystemsManagementClientBuilder.standard().withCredentials(credentials)).withRegion(REGION_DEFAULT)).build();
         GetParameterRequest parameterRequest = new GetParameterRequest();
         parameterRequest.withName(parameter).setWithDecryption(Boolean.valueOf(true));
         GetParameterResult parameterResult = simpleSystemsManagementClient.getParameter(parameterRequest);
@@ -26,11 +28,9 @@ public class ConfigParameters {
     }
 
     public String getSecret(String secretName) {
-        String region = "us-east-1";
-
+        AWSCredentialsProvider credentials = InstanceProfileCredentialsProvider.getInstance();
         // Create a Secrets Manager client
-        AWSSecretsManager client = AWSSecretsManagerClientBuilder.standard()
-                .withRegion(region)
+        AWSSecretsManager client = AWSSecretsManagerClientBuilder.standard().withCredentials(credentials).withRegion(REGION_DEFAULT)
                 .build();
 
         // In this sample we only handle the specific exceptions for the 'GetSecretValue' API.
