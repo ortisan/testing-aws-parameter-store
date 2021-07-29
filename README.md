@@ -14,8 +14,8 @@ curl --location --request GET 'localhost:8080/test' --header 'Content-Type: appl
 
 ### Useful Info:
 
-#### Class that decids where pick auth data
-io.awspring.cloud.autoconfigure.context.ContextCredentialsAutoConfiguration
+#### Class that decides where pick auth data
+[io.awspring.cloud.autoconfigure.context.ContextCredentialsAutoConfiguration](https://docs.awspring.io/spring-cloud-aws/docs/2.3.1-SNAPSHOT/apidocs/index.html?io/awspring/cloud/autoconfigure/context/ContextCredentialsAutoConfiguration.html)
 
 #### Chain of AWS auth providers
-com.amazonaws.auth.DefaultAWSCredentialsProviderChain.DefaultAWSCredentialsProviderChain
+[com.amazonaws.auth.DefaultAWSCredentialsProviderChain.DefaultAWSCredentialsProviderChain](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/auth/DefaultAWSCredentialsProviderChain.html)
