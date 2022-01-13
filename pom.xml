@@ -38,6 +38,10 @@
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
             <version>3.0.3</version>
         </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-ssm</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -65,6 +69,11 @@
         </dependency>
 
 
+<!--        <dependency>-->
+<!--            <groupId>io.awspring.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-aws-parameter-store-config</artifactId>-->
+<!--        </dependency>-->
+
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-sts</artifactId>
@@ -86,6 +95,7 @@
     </dependencies>
 
     <build>
+        <finalName>testing-secrets</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

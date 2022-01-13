@@ -7,10 +7,18 @@
    --description "My test secret for uses into spring boot" \
    --secret-string file://example.json
    ```
+1. Upload image to ECR
+   ```sh
+   aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 779882487479.dkr.ecr.us-east-1.amazonaws.com
+   aws ecr create-repository --repository-name test-param-secret || true
+   docker build -t 779882487479.dkr.ecr.us-east-1.amazonaws.com/test-param-secret:latest .
+   docker push 779882487479.dkr.ecr.us-east-1.amazonaws.com/test-param-secret:latest
+   ```
+
 1. Make a curl in route **/test**
-```sh
-curl --location --request GET 'localhost:8080/test' --header 'Content-Type: application/json'
-```
+   ```sh
+   curl --location --request GET 'localhost:8080/test' --header 'Content-Type: application/json'
+   ```
 
 ### Useful Info:
 

@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  localstack:
+    image: 'localstack/localstack:0.13.0'
+    restart: always
+    environment:
+      - AWS_DEFAULT_REGION=sa-east-1
+      - SERVICES=ssm,secretsmanager
+    ports:
+      - "4566-4599:4566-4599"
+      - "${PORT_WEB_UI-8080}:${PORT_WEB_UI-8080}"
+    volumes:
+      - ./docker/aws:/docker-entrypoint-initaws.d
+      - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"
